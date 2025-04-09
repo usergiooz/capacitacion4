@@ -140,4 +140,39 @@
     </div>
     <div class="question">
       <p>9. ¿Cómo puedes promover la cultura de seguridad?</p>
-      <label><input type="checkbox" name="q9" value="1"> D
+      <label><input type="checkbox" name="q9" value="1"> Dando el ejemplo</label><br>
+      <label><input type="checkbox" name="q9" value="0"> Imponiendo reglas</label><br>
+      <label><input type="checkbox" name="q9" value="0"> Quejándote constantemente</label>
+    </div>
+    <div class="question">
+      <p>10. ¿Qué frase representa mejor el módulo?</p>
+      <label><input type="checkbox" name="q10" value="1"> “Cuidarse es de profesionales”</label><br>
+      <label><input type="checkbox" name="q10" value="0"> “Dormir es para débiles”</label><br>
+      <label><input type="checkbox" name="q10" value="0"> “Llegar primero es lo más importante”</label>
+    </div>
+
+    <button type="button" onclick="calcularPuntaje()">Enviar respuestas</button>
+  </form>
+
+  <h3 id="resultado"></h3>
+
+  <script>
+    function calcularPuntaje() {
+      const form = document.getElementById('quizForm');
+      const data = new FormData(form);
+      let score = 0;
+      for (let value of data.values()) {
+        score += parseInt(value);
+      }
+      let mensaje = `Tu puntaje es: ${score} de 10. `;
+      if (score >= 6) {
+        mensaje += '¡Felicidades, aprobaste el módulo! ✅';
+      } else {
+        mensaje += 'No aprobaste, vuelve a repasar el contenido. ❌';
+      }
+      document.getElementById('resultado').textContent = mensaje;
+    }
+  </script>
+
+</body>
+</html>
